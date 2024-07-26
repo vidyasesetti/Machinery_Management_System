@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Machine Maintenance Home</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.btn-login {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.section {
+    padding: 100px 0;
+}
+
+.section img {
+    max-width: 100%;
+}
+
+.jumbotron {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.modal-footer .btn-secondary {
+    color: #343a40;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-body input[type="text"],
+.modal-body input[type="password"] {
+    border-radius: 10px;
+}
+
+.modal-body label {
+    font-weight: bold;
+}
+
+.psw a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.psw a:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Machine Maintenance</a>
+    <div class="ml-auto">
+        <a href="signup.jsp" class="btn btn-outline-light btn-login mr-2">Sign Up for User</a>
+        <div class="dropdown d-inline">
+            <button class="btn btn-outline-light btn-login dropdown-toggle" type="button" id="loginDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Login
+            </button>        
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="loginDropdown">
+                <a class="dropdown-item" href="#" onclick="openLoginModal('user')">User</a>
+                <a class="dropdown-item" href="#" onclick="openLoginModal('admin')">Admin</a>
+                <a class="dropdown-item" href="#" onclick="openLoginModal('engineer')">Engineer</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container-fluid p-0">
+    <div class="row section" style="background-color: #343a40; color: #fff;">
+        <div class="col-lg-6 p-5">
+            <h1 class="display-4">Welcome to the Machine Maintenance System</h1>
+            <p class="lead">Welcome to the ultimate solution for managing machine maintenance with ease and efficiency. Our system ensures that your machines are always in top condition, minimizing downtime and maximizing productivity.</p>
+            <p>Whether you are a user, an admin, or an engineer, our platform offers a comprehensive set of tools and features tailored to your needs. Sign up now and experience hassle-free machine maintenance like never before!</p>
+        </div>
+        <div class="col-lg-6 p-0">
+            <img src="http://photos.wikimapia.org/p/00/00/65/62/01_big.jpg">
+        </div>
+    </div>
+    <div class="row section" style="background-color: #f8f9fa;">
+        <div class="col-lg-6 p-0">
+            <img src="https://images.indianexpress.com/2021/12/AMNS-Facebook.jpg" alt="Machine Maintenance Image">
+        </div>
+        <div class="col-lg-6 p-5">
+            <h2 class="display-4">Efficient Machine Maintenance</h2>
+            <p class="lead">Our system is designed to streamline machine maintenance processes, allowing you to manage your equipment with greater efficiency and precision. With intuitive interfaces and powerful features, you can easily schedule, track, and analyze maintenance tasks, ensuring optimal performance and reliability.</p>
+            <p>Experience the power of efficient machine maintenance management today. Join us and take control of your maintenance operations like never before!</p>
+        </div>
+    </div>
+    <div class="row section" style="background-color: #343a40; color: #fff;">
+        <div class="col-lg-6 p-5">
+            <h2 class="display-4">Quality Maintenance Service</h2>
+            <p class="lead">At Machine Maintenance, we are committed to delivering top-notch maintenance services that meet the highest standards of quality and reliability. Our team of experienced engineers and technicians are dedicated to keeping your machines running smoothly and efficiently, ensuring minimal downtime and maximum productivity.</p>
+            <p>With our comprehensive maintenance solutions, you can rest assured that your equipment is in good hands. Join us today and experience the difference that quality maintenance service can make!</p>
+        </div>
+        <div class="col-lg-6 p-0">
+            <img src="https://rollingpix.com/wp-content/uploads/2018/05/steel-plants_1-1024x681.jpg" alt="Machine Maintenance Image">
+        </div>
+    </div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="login.jsp" method="post" id="loginForm">
+                    <input type="hidden" id="role" name="role" value="">
+                    <div class="form-group">
+                        <label for="identifier" id="identifierLabel"><b>Username</b></label>
+                        <input type="text" class="form-control" placeholder="Enter Username" id="identifier" name="user" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pswd"><b>Password</b></label>
+                        <input type="password" class="form-control" placeholder="Enter Password" name="pswd" required>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" name="remember" id="remember" checked>
+                        <label class="form-check-label" for="remember">Remember me</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function openLoginModal(role) {
+    document.getElementById('role').value = role;
+    document.getElementById('loginModalLabel').textContent = 'Login as ' + role.charAt(0).toUpperCase() + role.slice(1);
+    if (role === 'engineer') {
+        document.getElementById('identifierLabel').textContent = 'ID';
+        document.getElementById('identifier').setAttribute('name', 'id');
+        document.getElementById('identifier').setAttribute('placeholder', 'Enter ID');
+    } else {
+        document.getElementById('identifierLabel').textContent = 'Username';
+        document.getElementById('identifier').setAttribute('name', 'user');
+        document.getElementById('identifier').setAttribute('placeholder', 'Enter Username');
+    }
+    $('#loginModal').modal('show');
+}
+</script>
+
+</body>
+</html>
